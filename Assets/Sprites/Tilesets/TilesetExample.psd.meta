@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7edab1ff11a8543459f968e3db675738
-timeCreated: 1538504982
+timeCreated: 1538510341
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -103,7 +103,7 @@ TextureImporter:
       name: TilesetExample_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 35
         y: 171
         width: 32
         height: 32
@@ -117,7 +117,7 @@ TextureImporter:
       name: TilesetExample_2
       rect:
         serializedVersion: 2
-        x: 67
+        x: 69
         y: 171
         width: 32
         height: 32
@@ -131,7 +131,7 @@ TextureImporter:
       name: TilesetExample_3
       rect:
         serializedVersion: 2
-        x: 100
+        x: 103
         y: 171
         width: 32
         height: 32
@@ -145,7 +145,7 @@ TextureImporter:
       name: TilesetExample_4
       rect:
         serializedVersion: 2
-        x: 133
+        x: 137
         y: 171
         width: 32
         height: 32
@@ -159,7 +159,7 @@ TextureImporter:
       name: TilesetExample_5
       rect:
         serializedVersion: 2
-        x: 166
+        x: 171
         y: 171
         width: 32
         height: 32
