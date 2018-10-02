@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
 
+	// Public variables used in controlling the player 
 	public float playerSpeed = 10f;
 	public float dashTimer;
 	public float dashDelay;
@@ -42,13 +43,6 @@ public class PlayerControl : MonoBehaviour {
 		FaceMouse ();
 	}
 
-	void FixedUpdate () {
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
-		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-		playerRigidBody.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal")* playerSpeed, 0.99f), Mathf.Lerp(0, Input.GetAxis("Vertical")* playerSpeed, 0.99f));
-	}
-
 	/*void Move (Vector2 moveDirection) {
 		Vector2 playerDirection = moveDirection;
 		if (playerDirection.sqrMagnitude > 1) {
@@ -57,6 +51,13 @@ public class PlayerControl : MonoBehaviour {
 			player.transform.Translate (playerDirection * playerSpeed * Time.deltaTime);
 		}
 	}*/
+
+	void FixedUpdate () {
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
+		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+		playerRigidBody.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal")* playerSpeed, 0.99f), Mathf.Lerp(0, Input.GetAxis("Vertical")* playerSpeed, 0.99f));
+	}
 
 	void FaceMouse () {
 		Vector2 mousePosition = Input.mousePosition;
