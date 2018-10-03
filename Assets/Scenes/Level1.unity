@@ -5236,8 +5236,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
+  maxSpeed: 2
   dashTimer: 0
-  dashDelay: 5
+  dashDelay: 4
+  MouseAngle: 0
   player: {fileID: 992341185}
 --- !u!50 &992341189
 Rigidbody2D:
@@ -5250,13 +5252,13 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 2
+  m_Mass: 0.0001
+  m_LinearDrag: 0.33
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &992341190
