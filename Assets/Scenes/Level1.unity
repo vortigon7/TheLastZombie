@@ -5235,11 +5235,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2521843aa187d8242b828f1a59b67805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 50
-  maxSpeed: 50
+  pSpeed: 120
+  maxSpeed: 120
   dashTimer: 0
   dashDelay: 4
-  MouseAngle: 0
+  mouseAngle: 0
   player: {fileID: 992341185}
 --- !u!50 &992341189
 Rigidbody2D:
@@ -5253,7 +5253,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 0.0001
-  m_LinearDrag: 4
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
