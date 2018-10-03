@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour {
 
 	// Public variables used in controlling the player 
-	public float playerSpeed = 3;
-	public float maxSpeed = 20;
+	public float playerSpeed = 50f;
+	public float maxSpeed = 50f;
 	public float dashTimer;
 	public float dashDelay;
 	public float MouseAngle;
@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour {
 	private Vector2 spriteDirection;
 	private Vector2 playerDirection;
 	private Vector2 DashMovement;
+	private Vector2 velocityOld;
 
 	void Start () {
 		playerRigidBody = GetComponent<Rigidbody2D> ();
@@ -30,8 +31,14 @@ public class PlayerControl : MonoBehaviour {
 			dashTimer -= Time.deltaTime;
 		}
 
-
 		FaceMouse ();
+		int n = 0;
+		while (n < (3 * Time.deltaTime)) {
+			Debug.Log (playerRigidBody.velocity.magnitude);
+			n++;
+		}
+
+		velocityOld = playerRigidBody.velocity;
 	}
 
 	void FixedUpdate ()
@@ -39,10 +46,13 @@ public class PlayerControl : MonoBehaviour {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 		float accelerationMultiplier = 1 - (playerRigidBody.velocity.magnitude / maxSpeed);
-		Vector2 ZeroVector = new Vector2 (0f, 0f);
-		Vector2 MouseCircle = (new Vector2 (Mathf.Sin (MouseAngle), Mathf.Cos (MouseAngle)) * 15.3f);
-		Vector2 Movement = new Vector2(Input.GetAxis("Horizontal")* playerSpeed * accelerationMultiplier * Time.deltaTime, Input.GetAxis("Vertical") * playerSpeed * accelerationMultiplier * Time.deltaTime);
+		Vector2 MouseCircle = (new Vector2 (Mathf.Sin (MouseAngle), Mathf.Cos (MouseAngle)) * playerSpeed);
+		Vector2 Movement = new Vector2(moveHorizontal * playerSpeed * accelerationMultiplier * Time.deltaTime, moveVertical * playerSpeed * accelerationMultiplier * Time.deltaTime);
 		playerRigidBody.AddForce (Movement);
+
+		if ((playerRigidBody.velocity.magnitude < 1) && (velocityOld.sqrMagnitude > playerRigidBody.velocity.sqrMagnitude)) {
+			playerRigidBody.velocity -= playerRigidBody.velocity * Time.deltaTime * 300f;
+		}
 
 		if ((Input.GetKeyDown (KeyCode.Mouse1)) && (dashTimer <= 0)) {
 			playerRigidBody.AddForce (MouseCircle * 1f);
