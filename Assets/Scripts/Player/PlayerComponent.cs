@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour {
+public class PlayerComponent : MonoBehaviour {
 
 	// Player stats
 	public float pHealth; // Defines the player's health
@@ -26,10 +26,14 @@ public class Player : MonoBehaviour {
 	// Adding PlayerControl.cs script variables; used for disabling controls on death
 	private PlayerControl pControl; // This is the PlayerControl.cs script
 
+	// A boolean that checks if the player is seen by an enemy
+	//public bool pIsSeen;
+
 	// Use this for initialization
 	void Start () {
 		pControl = GetComponent<PlayerControl> ();
 		pHealth = pMaxHealth; // Sets current health to maximum health
+		//pIsSeen = false; // Sets whether the player is seen to a default false
 		healthBar.value = CalculateHealth (); // Sets healthbar at current health <-- probably not the most efficient but I'll leave it for now
 		IsPlayerDead (); // Checks at start if the player is dead. Sets Death Screen inactive if not <-- To avoid a bug of showing Death Screen at beginning of scene
 
