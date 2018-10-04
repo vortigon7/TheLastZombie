@@ -15,10 +15,10 @@ public class PlayerControl : MonoBehaviour {
 	private Vector2 pMovement; // pMovement is the amount and direction of the force the player should move
 	private bool pDashState; // pDashState is a boolean that defines whether the player is dashing
 
-	private Player pPlayer; // This is a Player.cs script
+	private PlayerComponent pPlayer; // This is a Player.cs script
 
 	void Start () {
-		pPlayer = GetComponent<Player> (); // This line looks for the Player.cs script attached to the player object
+		pPlayer = GetComponent<PlayerComponent> (); // This line looks for the Player.cs script attached to the player object
 		pRigidBody = GetComponent<Rigidbody2D> (); // This line looks four the player's RigidBody2D component
 
 	}
@@ -34,11 +34,11 @@ public class PlayerControl : MonoBehaviour {
 		FaceMouse (); // This calls the FaceMouse function every Update
 
 		// Displaying the player's velocity in the console
-		int n = 0;
+		/*int n = 0;
 		while (n < (3 * Time.deltaTime)) {
 			Debug.Log (pRigidBody.velocity.magnitude);
 			n++;
-		}
+		}*/
 		// A variable that stores the velocity of the player right before its next value
 		pVelocityOld = pRigidBody.velocity;
 	}
