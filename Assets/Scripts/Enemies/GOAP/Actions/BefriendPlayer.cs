@@ -23,7 +23,7 @@ public class BefriendPlayer : GOAPAction {
 
 	public override bool checkProceduralPrecondition (GameObject agent) {
 		agent = GameObject.Find ("Player");
-		target = agent;
+		rTarget = agent;
 		return agent != null;
 	}
 

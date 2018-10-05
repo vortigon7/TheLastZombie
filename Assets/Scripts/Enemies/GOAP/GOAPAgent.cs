@@ -93,7 +93,7 @@ public sealed class GOAPAgent : MonoBehaviour {
 			GOAPAction action = currentActions.Peek ();
 
 			// Action requires a target but has none. Go back to planning stage
-			if (action.requiresInRange () && action.target == null) {
+			if (action.requiresInRange () && action.rTarget == null) {
 				fsm.popState (); // Clear moveToTargetState
 				fsm.popState (); // Clear performActionState
 				fsm.pushState (idleState);

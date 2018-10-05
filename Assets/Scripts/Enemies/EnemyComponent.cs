@@ -45,5 +45,15 @@ public abstract class EnemyComponent : MonoBehaviour, IGOAP {
 
 	}
 
-	public abstract bool moveAgent (GOAPAction nextAction);
+	public bool moveAgent (GOAPAction nextAction) {
+		// To-do: Change this code to the pathfinding system
+		float step = 1f * Time.deltaTime;
+		gameObject.transform.position = Vector2.MoveTowards (gameObject.transform.position, nextAction.rTarget.transform.position, step);
+		if (gameObject.transform.position.Equals (nextAction.rTarget.transform.position)) {
+			nextAction.setInRange (true);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

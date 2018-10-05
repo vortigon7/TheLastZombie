@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 public class FSM {
+	// A dynamic Finite State Machine
 
 	private Stack<FSMState> stateStack = new Stack<FSMState> (); // Creates a new interface for storing states
 

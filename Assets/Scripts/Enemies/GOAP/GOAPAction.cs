@@ -8,24 +8,26 @@ public abstract class GOAPAction : MonoBehaviour {
 	 * Basically a superclass for all actions
 	 */
 
+	// Set preconditions and effects
 	private HashSet<KeyValuePair<string, object>> preconditions; // The preconditions needed for an action to run
 	private HashSet<KeyValuePair<string, object>> effects; // The change to the state after the action has run
 
-	private bool inRange = false; // This checks whether the agent is in range of the target it needs to perform an action on
+	// Requirements
+	private bool rInRange = false; // This checks whether the agent is in range of the rTarget it needs to perform an action on
+	public GameObject rTarget; // This is the rTarget an action is performed upon; can be null (if the action doesn't need a rTarget)
 
-	public float cost = 1f; // This is the cost of an action (should be changed in the action component itself, inside the ActionName()
-
-	public GameObject target; // This is the target an action is performed upon; can be null (if the action doesn't need a target)
+	// Properties
+	public float cost = 1f; // This is the cost of an action (should be changed in the action component itself, inside the ActionName() )
 
 	public GOAPAction () {
 		preconditions = new HashSet<KeyValuePair<string, object>> ();
 		effects = new HashSet<KeyValuePair<string, object>> ();
 	}
 
-	// Reset every GOAPAction variables
+	// Reset every requirement
 	public void doReset () {
-		inRange = false;
-		target = null;
+		rInRange = false;
+		rTarget = null;
 		reset ();
 	}
 
@@ -43,16 +45,16 @@ public abstract class GOAPAction : MonoBehaviour {
      */
 	public abstract bool perform (GameObject agent);
 
-	public abstract bool requiresInRange (); // Does the action require to be in range of a target game object?
+	public abstract bool requiresInRange (); // Does the action require to be in range of a rTarget game object?
 
-	// Returns a true/false value depending on if the agent is in range of the target
+	// Returns a true/false value depending on if the agent is in range of the rTarget
 	public bool isInRange () {
-		return inRange;
+		return rInRange;
 	}
 
-	// Sets the instance's inRange variable
-	public void setInRange (bool inRange) {
-		this.inRange = inRange;
+	// Sets the instance's rInRange variable
+	public void setInRange (bool rInRange) {
+		this.rInRange = rInRange;
 	}
 
 	// Adds a precondition, requires the name of precondition (string key) and the value (object value)
